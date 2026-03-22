@@ -85,6 +85,22 @@ class TweetRepository{
 
 
 
+    async getAll(offset,limit){
+
+        try {
+            const response=await Tweet.find().skip(offset).limit(limit)  //-> use for pagination
+
+
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+
+
+    }
+
+
 
 
 }
