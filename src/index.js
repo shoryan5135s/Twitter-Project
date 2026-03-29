@@ -1,12 +1,13 @@
-const express=require('express');
-const connect=require('./db/database.js')
+import express from 'express'
 const app=express();
-const {PORT}=require('./config/serverconfig.js')
+import {PORT} from './config/serverconfig.js'
 
-const HashtagRepository=require('./repository/hashtag_repo.js')
+import HashtagRepository from './repository/hashtag_repo.js';
 
 
-const TweetService=require('./services/tweet_service.js')
+import TweetService from './services/tweet_service.js'
+
+import connect from './db/database.js';
 
 
 app.listen(PORT,async()=>{

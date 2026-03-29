@@ -1,5 +1,5 @@
-const mongoose=require('mongoose')
-const {MONGODB_URI,APP_NAME}=require('../config/serverconfig')
+import mongoose from 'mongoose'
+import { MONGODB_URI, APP_NAME } from '../config/serverconfig.js';
 
 
 const connnect=async()=>{
@@ -21,5 +21,4 @@ const connnect=async()=>{
 }
 
 
-
-module.exports=connnect;
+export default connnect;

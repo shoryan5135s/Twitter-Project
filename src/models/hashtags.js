@@ -1,6 +1,5 @@
-const mongoose=require('mongoose')
-const Tweet=require('./tweet')
-
+import mongoose from 'mongoose'; 
+import Tweet from './tweet.js'
 const hashtagsSchema=new mongoose.Schema({
 
     title:{//name of the hashtag
@@ -26,7 +25,6 @@ const hashtagsSchema=new mongoose.Schema({
 
 
 
-const Hashtag=mongoose.model('Hashtag',hashtagsSchema);
+ const Hashtag=mongoose.model('Hashtag',hashtagsSchema);
 
-
-module.exports=Hashtag 
+export default Hashtag
