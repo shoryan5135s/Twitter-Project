@@ -3,24 +3,21 @@ const Tweet=require('./tweet')
 
 const hashtagsSchema=new mongoose.Schema({
 
-    title:{
-        type:String,
-        required:true
+    title:{//name of the hashtag
+    type: String,
+    required: true,
+    unique: true,
+    index: true,
+    lowercase: true,
+    trim: true
     },
-
-    tweetCount:{
-        type:Number,
-        required:true,
-        default:0
-
-
-    },
-
-    tweets:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Tweet'
-
-    }]
+    tweets: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Tweet'
+        }
+    ]
+   
 
 
 
@@ -32,4 +29,4 @@ const hashtagsSchema=new mongoose.Schema({
 const Hashtag=mongoose.model('Hashtag',hashtagsSchema);
 
 
-module.exports=Hashtag
+module.exports=Hashtag 
