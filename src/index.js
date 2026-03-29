@@ -17,7 +17,7 @@ app.listen(PORT,async()=>{
     const repo=new TweetService();
 
     const tweet=repo.createTweet({
-        content:'I am #excited and going to have #fun #newjob #cpding'
+        content:'I am #EXCITED and going to have #fun #newjob #cpding'
     })
 
     // await repo.bulkcreate([

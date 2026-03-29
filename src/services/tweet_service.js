@@ -17,7 +17,7 @@ class TweetService{
          let tags=content.match(/#([a-zA-Z0-9_]+)/g); // regex that matches hashtags and extract them from content
  
          tags=tags.map((element)=>
-             element.substring(1) // for removing #
+            element.substring(1).toLowerCase()
          )
  
  

@@ -25,6 +25,9 @@ const hashtagsSchema=new mongoose.Schema({
 
 
 
+
+
+
  const Hashtag=mongoose.model('Hashtag',hashtagsSchema);
 
 export default Hashtag
