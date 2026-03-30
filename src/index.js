@@ -1,31 +1,20 @@
 import express from 'express'
+import bodyParser from 'body-parser';
 const app=express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 import {PORT} from './config/serverconfig.js'
 
-import HashtagRepository from './repository/hashtag_repo.js';
 
-
-import TweetService from './services/tweet_service.js'
-
+import apiRoutes from './Routes/index.js'
 import connect from './db/database.js';
 
-
+app.use('/api',apiRoutes)
 app.listen(PORT,async()=>{
     console.log("server started");
     await connect();
     console.log('Mongodb connected');
-    const repo=new TweetService();
-
-    const tweet=repo.createTweet({
-        content:'I am #EXCITED and going to have #fun #newjob #cpding'
-    })
-
-    // await repo.bulkcreate([
-    //     {title:'javascript'},
-    //     {title:'trending'},
-    //     {title:'nodejs'},
-    //     {title:'reactjs'},
-    // ])
+    
 
     
     
