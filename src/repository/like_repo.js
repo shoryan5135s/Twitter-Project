@@ -13,6 +13,7 @@ class LikeRepository extends CrudRepository{
 
         try {
             const like=await Like.findOne(data);
+            return like;
 
 
         } catch (error) {
@@ -21,6 +22,18 @@ class LikeRepository extends CrudRepository{
 
 
     }
+
+    async delete(id){
+
+        try {
+           const response= await Like.findByIdAndDelete(id);
+
+           return response
+        } catch (error) {
+            throw error;
+        }   
+    }
+
 }
 
 
