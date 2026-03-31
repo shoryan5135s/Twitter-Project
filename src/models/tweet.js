@@ -8,15 +8,26 @@ const tweetSchema =new mongoose.Schema({
         max:[250,'Tweet cannot be more then 250 characters']
     },
 
-likes: {
-  type: [
+likes: [
+  
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Like'
     }
   ],
-  default: [] 
-}
+
+
+
+  comments:[{
+
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'Comment'
+    
+
+
+  }]
+
+
 
 
 

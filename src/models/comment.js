@@ -28,14 +28,33 @@ const commentSchema =new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         refPath:'onModel',
         required:true
-        
-   }
+
+   },
+
+   comments:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'Comment'
+
+   }],
+
+
+   likes: [
+     
+       {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: 'Like'
+       }
+     ],
+   
+   
+   
+   
 
 
    
 
 },{timestamps:true})
 
+const Comment=mongoose.model('Comment',commentSchema)
 
-
-export const Comment=mongoose.model('Comment',commentSchema)
+export default Comment;

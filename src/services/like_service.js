@@ -1,6 +1,7 @@
 import LikeRepository from '../repository/like_repo.js';
 
 import TweetRepository from '../repository/tweet_repository.js';
+import CommentRepository from '../repository/comment_repo.js';
 
 
 class LikeService{
@@ -8,7 +9,7 @@ class LikeService{
     constructor(){
         this.likeRepository=new LikeRepository();
         this.tweetRepository=new TweetRepository();
-    }
+        this.commentRepository=new CommentRepository();}
 
 
 
@@ -30,6 +31,9 @@ class LikeService{
 
                 else if(modelType=='Comment'){
 
+                    likeable=await this.commentRepository.get(modelId)
+                    
+                    likeable=await likeable.populate('likes');
                     
 
 
