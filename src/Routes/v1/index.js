@@ -23,6 +23,8 @@ router.post('/comment',commentController.createComment);
 
 router.post('/signup',userController.create);
 
+router.post('/login',userController.login);
+
 
 
 export default router;

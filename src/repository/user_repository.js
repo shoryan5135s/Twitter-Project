@@ -26,6 +26,27 @@ class UserRepository extends CrudRepository{
     }
 
 
+
+    async findByEmail(email){
+    
+        try {
+            
+            const response=await User.findOne({
+                email:email
+
+            })
+
+            return response;
+
+        } catch (error) {
+            throw error;
+        }
+    
+    }
+
+
+
+
 }
 
 
