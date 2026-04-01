@@ -5,11 +5,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 import {PORT} from './config/serverconfig.js'
 
-import {TweetRepository,HashtagRepository,UserRepository,LikeRepository} from './repository/index.js'
+import passport from 'passport';
 
-import LikeService from './services/like_service.js';
+import {passportAuth} from './config/jwt.js'
+
 import apiRoutes from './Routes/index.js'
 import connect from './db/database.js';
+
+
+app.use(passport.initialize())
+passportAuth(passport);
 
 app.use('/api',apiRoutes)
 app.listen(PORT,async()=>{

@@ -13,7 +13,14 @@ const opts = {
 
 
 export const passportAuth = (passport)=>{
+
+            console.log("inside stratergy");
+
+
     passport.use(new JwtStrategy(opts,async (jwt_payload,done)=>{
+
+        console.log("inside stratergy");
+        
 
         const user=await User.findById(jwt_payload.id);
 

@@ -9,6 +9,8 @@ import CommentController from '../../controller/comment_controller.js';
 
 import UserController from '../../controller/auth_controller.js';
 
+import { authenticate } from '../../middleware/authenticate.js';
+
 const tweetcontroller=new TweetController();
 const likeController=new LikeController();
 const commentController=new CommentController();
@@ -16,7 +18,7 @@ const userController=new UserController();
 const router =express.Router();
 
 
-router.post('/tweets',tweetcontroller.createTweet);
+router.post('/tweets',authenticate,tweetcontroller.createTweet);
 router.post('/likes/toggle',likeController.toggleLike);
 
 router.post('/comment',commentController.createComment);
