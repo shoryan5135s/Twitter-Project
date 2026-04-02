@@ -5,13 +5,13 @@ class TweetRepository{
     
 
 
-    async create({content,email}){
+    async create(data){
 
         try {
             
             const response=await Tweet.create({
-                content:content,
-                email:email
+                content:data.content,
+                 image:data.image
             })
 
             return response

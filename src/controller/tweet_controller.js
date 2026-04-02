@@ -1,6 +1,9 @@
 import TweetService from "../services/tweet_service.js";
 
 
+
+
+
 class TweetController{
 
     constructor(){
@@ -9,10 +12,21 @@ class TweetController{
 
 
      createTweet=async(req,res)=>{
-
+            console.log(req.file);
+            
         try {
 
-            const response=await this.tweetService.createTweet(req.body);
+            const data={
+                ...req.body,
+                image:req.file? req.file.location:''
+            }
+           
+            console.log("data",data);
+            
+            const response=await this.tweetService.createTweet(data);
+
+            console.log(response);
+            
             return res.status(201).json({
 
                 data:response,
@@ -29,7 +43,8 @@ class TweetController{
         }
 
         catch(error){
-
+                console.log(error);
+                
                 return res.status(500).json({
                     data:{},
                     err:error,

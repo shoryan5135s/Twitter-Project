@@ -10,6 +10,7 @@ import CommentController from '../../controller/comment_controller.js';
 import UserController from '../../controller/auth_controller.js';
 
 import { authenticate } from '../../middleware/authenticate.js';
+import { upload } from '../../config/file_upload_s3_config.js';
 
 const tweetcontroller=new TweetController();
 const likeController=new LikeController();
@@ -18,7 +19,7 @@ const userController=new UserController();
 const router =express.Router();
 
 
-router.post('/tweets',authenticate,tweetcontroller.createTweet);
+router.post('/tweets',upload.single('image'),tweetcontroller.createTweet);
 router.post('/likes/toggle',likeController.toggleLike);
 
 router.post('/comment',commentController.createComment);
@@ -26,7 +27,6 @@ router.post('/comment',commentController.createComment);
 router.post('/signup',userController.create);
 
 router.post('/login',userController.login);
-
 
 
 export default router;

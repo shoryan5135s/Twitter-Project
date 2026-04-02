@@ -25,7 +25,13 @@ likes: [
     
 
 
-  }]
+  }],
+
+  image: {
+
+    type: String
+
+  }
 
 
 

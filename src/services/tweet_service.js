@@ -14,21 +14,31 @@ class TweetService{
          const content=data.content;
  
  
-         let tags=content.match(/#([a-zA-Z0-9_]+)/g); // regex that matches hashtags and extract them from content
- 
+         let tags=content.match(/#([a-zA-Z0-9_]+)/g)|| []; // regex that matches hashtags and extract them from content
+        
          tags=tags.map((element)=>
             element.substring(1).toLowerCase()
          )
  
  
  
-         const tweet=await this.tweetRepository.create(data);
+         console.log("DATA BEFORE REPO:", data);
+
+const tweet = await this.tweetRepository.create(data);
+
+console.log("TWEET AFTER REPO:", tweet);
+         
+         
 
 
         
          
-         let alreadyPresentTag= await this.hashtagRepository.findByName(tags);
+         let alreadyPresentTag= [];
+        if(tags.length>0){
+             alreadyPresentTag=await this.hashtagRepository.findByName(tags);
+        }
            
+        alreadyPresentTag=alreadyPresentTag || [];
 
         let titleOfPresentTags=alreadyPresentTag.map((tag)=> tag.title);
 
